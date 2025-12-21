@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BREAD Clothing - Retro Gaming Design System
+   Colors inspired by classic gaming consoles and pixel art
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* BREAD Brand Colors - Retro Gaming Theme */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+
+    /* Hero Red - Bold, energetic red from the reference */
+    --primary: 0 85% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Deep Blue - Product sections, trust color */
+    --secondary: 220 80% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted tones for subtle elements */
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 40%;
+
+    /* Accent - Golden yellow for highlights */
+    --accent: 45 95% 55%;
+    --accent-foreground: 0 0% 8%;
+
+    /* Cards and surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Destructive actions */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Form elements */
+    --border: 220 15% 85%;
+    --input: 220 15% 92%;
+    --ring: 0 85% 50%;
+
+    /* Pixel-perfect radius */
+    --radius: 0px;
+
+    /* Retro sidebar */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 85% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 80% 35%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 45 95% 55%;
+
+    /* Custom BREAD colors */
+    --bread-red: 0 85% 50%;
+    --bread-blue: 220 80% 35%;
+    --bread-black: 0 0% 8%;
+    --bread-yellow: 45 95% 55%;
+    --bread-white: 0 0% 100%;
+    --bread-cream: 45 30% 95%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --primary: 0 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 95% 55%;
+    --accent-foreground: 0 0% 8%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 0 85% 55%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 80% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Pixel font for headings */
+  .font-pixel {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  /* Retro terminal font */
+  .font-retro {
+    font-family: 'VT323', monospace;
+  }
+}
+
+@layer utilities {
+  /* Retro button effects */
+  .retro-shadow {
+    box-shadow: 4px 4px 0px hsl(var(--bread-black));
+  }
+
+  .retro-shadow-sm {
+    box-shadow: 2px 2px 0px hsl(var(--bread-black));
+  }
+
+  .retro-shadow-accent {
+    box-shadow: 4px 4px 0px hsl(var(--accent));
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px hsl(var(--bread-black));
+  }
+
+  /* Pixelated border */
+  .pixel-border {
+    border: 3px solid hsl(var(--bread-black));
+  }
+
+  /* Scanline effect for retro feel */
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(0 85% 40%) 100%);
+  }
+
+  .gradient-blue {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(220 80% 25%) 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--bread-black));
+  border: 2px solid hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
