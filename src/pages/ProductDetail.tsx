@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useProduct } from "@/hooks/useProducts";
 import { useCart } from "@/hooks/useCart";
 import { useToast } from "@/hooks/use-toast";
+import { formatPrice } from "@/components/products/ProductCard";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -148,11 +149,11 @@ const ProductDetail = () => {
             {/* Price */}
             <div className="flex items-center gap-4">
               <span className="font-pixel text-2xl text-primary">
-                ${Number(product.price).toFixed(2)}
+                {formatPrice(product.price)}
               </span>
               {product.original_price && Number(product.original_price) > Number(product.price) && (
                 <span className="font-retro text-2xl text-muted-foreground line-through">
-                  ${Number(product.original_price).toFixed(2)}
+                  {formatPrice(product.original_price)}
                 </span>
               )}
             </div>

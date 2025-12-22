@@ -3,6 +3,7 @@ import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
+import { formatPrice } from "@/components/products/ProductCard";
 
 const Cart = () => {
   const { items, updateQuantity, removeItem, clearCart } = useCart();
@@ -77,7 +78,7 @@ const Cart = () => {
                     {item.size} / {item.color}
                   </p>
                   <p className="font-pixel text-sm text-primary">
-                    ${item.price.toFixed(2)}
+                    {formatPrice(item.price)}
                   </p>
 
                   {/* Quantity Controls */}
@@ -122,7 +123,7 @@ const Cart = () => {
                 {/* Item Total */}
                 <div className="text-right">
                   <p className="font-pixel text-sm text-foreground">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    {formatPrice(item.price * item.quantity)}
                   </p>
                 </div>
               </div>
@@ -150,18 +151,18 @@ const Cart = () => {
                 <div className="flex justify-between font-retro text-lg">
                   <span className="text-muted-foreground">Subtotal</span>
                   <span className="text-card-foreground">
-                    ${subtotal.toFixed(2)}
+                    {formatPrice(subtotal)}
                   </span>
                 </div>
                 <div className="flex justify-between font-retro text-lg">
                   <span className="text-muted-foreground">Shipping</span>
                   <span className="text-card-foreground">
-                    {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+                    {shipping === 0 ? "FREE" : `${formatPrice(shipping)}`}
                   </span>
                 </div>
                 {subtotal < 100 && (
                   <p className="font-retro text-sm text-accent">
-                    Add ${(100 - subtotal).toFixed(2)} more for free shipping!
+                    Add {formatPrice(100 - subtotal)} more for free shipping!
                   </p>
                 )}
               </div>
@@ -172,7 +173,7 @@ const Cart = () => {
                     TOTAL
                   </span>
                   <span className="font-pixel text-lg text-primary">
-                    ${total.toFixed(2)}
+                    {formatPrice(total)}
                   </span>
                 </div>
               </div>
