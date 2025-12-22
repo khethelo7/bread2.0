@@ -55,7 +55,7 @@ export const Footer = () => {
             <h3 className="font-pixel text-xs text-accent mb-4">CONNECT</h3>
             <div className="flex space-x-4 mb-6">
               <a
-                href="#"
+                href="https://www.instagram.com/bread_.99/"
                 className="text-bread-white/80 hover:text-primary transition-colors"
                 aria-label="Instagram"
               >

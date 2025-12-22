@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
+export const formatPrice = (amount: number) =>
+  new Intl.NumberFormat("en-ZA", {
+    style: "currency",
+    currency: "ZAR",
+  }).format(amount);
+
 interface ProductCardProps {
   id: string;
   slug: string;
@@ -57,11 +63,11 @@ export const ProductCard = ({
         </h3>
         <div className="flex items-center gap-2">
           <span className="font-pixel text-sm text-primary">
-            ${price.toFixed(2)}
+            {formatPrice(price)}
           </span>
           {originalPrice && originalPrice > price && (
             <span className="font-retro text-lg text-muted-foreground line-through">
-              ${originalPrice.toFixed(2)}
+              {formatPrice(originalPrice)}
             </span>
           )}
         </div>
