@@ -8,7 +8,7 @@ import { Loader2, Mail, MailOpen } from 'lucide-react';
 import { format } from 'date-fns';
 import type { Tables } from '@/integrations/supabase/types';
 
-type Message = Tables<'contact_messages'>;
+type Message = Tables<'messages'>;
 
 const Messages = () => {
   const queryClient = useQueryClient();
@@ -17,7 +17,7 @@ const Messages = () => {
     queryKey: ['admin-messages'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('contact_messages')
+        .from('messages')
         .select('*')
         .order('created_at', { ascending: false });
       if (error) throw error;
@@ -28,7 +28,7 @@ const Messages = () => {
   const markReadMutation = useMutation({
     mutationFn: async ({ id, is_read }: { id: string; is_read: boolean }) => {
       const { error } = await supabase
-        .from('contact_messages')
+        .from('messages')
         .update({ is_read })
         .eq('id', id);
       if (error) throw error;

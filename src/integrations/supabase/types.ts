@@ -38,7 +38,7 @@ export type Database = {
         }
         Relationships: []
       }
-      contact_messages: {
+      messages: {
         Row: {
           created_at: string
           email: string

@@ -29,7 +29,7 @@ const Dashboard = () => {
     queryKey: ['admin-message-count'],
     queryFn: async () => {
       const { count } = await supabase
-        .from('contact_messages')
+        .from('messages')
         .select('*', { count: 'exact', head: true })
         .eq('is_read', false);
       return count || 0;
