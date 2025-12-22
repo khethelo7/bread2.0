@@ -21,10 +21,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const checkAdminRole = async (userId: string) => {
     const { data, error } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
+      .from('admins')
+      .select('id')
+      .eq('id', userId)
       .maybeSingle();
 
     if (error) {
