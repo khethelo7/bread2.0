@@ -4,7 +4,11 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/bread2.0/", // 👈 ADD THIS
+  base: "./", // 👈 ADD THIS
+  build: {
+    outDir: "docs",
+    emptyOutDir: true
+  },
   server: {
     host: "::",
     port: 8080,
