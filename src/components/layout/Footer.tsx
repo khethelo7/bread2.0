@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Twitter, Youtube, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -62,11 +63,13 @@ export const Footer = () => {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://wa.me/27790146092" // replace with real number
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-bread-white/80 hover:text-primary transition-colors"
-                aria-label="Twitter"
+                aria-label="WhatsApp"
               >
-                <Twitter className="h-6 w-6" />
+                <FaWhatsapp className="h-6 w-6" />
               </a>
               <a
                 href="#"
@@ -76,7 +79,7 @@ export const Footer = () => {
                 <Youtube className="h-6 w-6" />
               </a>
               <a
-                href="mailto:hello@bread.style"
+                href="mailto:saneleknkosi@gmail.com"
                 className="text-bread-white/80 hover:text-primary transition-colors"
                 aria-label="Email"
               >
@@ -84,7 +87,7 @@ export const Footer = () => {
               </a>
             </div>
             <p className="font-retro text-sm text-bread-white/60">
-              hello@bread.style
+              saneleknkosi@gmail.com
             </p>
           </div>
         </div>
@@ -93,6 +96,9 @@ export const Footer = () => {
         <div className="border-t border-bread-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="font-retro text-sm text-bread-white/50">
             © 2024 BREAD. All rights reserved.
+          </p>
+          <p className="font-retro text-sm text-bread-white/50">
+            created & maintained by <a href="https://www.linkedin.com/in/profile-khethelo-nkosi/" className="text-bread-white/30 hover:text-bread-white/60 transition-colors">Khethelo</a>
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link
