@@ -27,6 +27,7 @@ import { Plus, Search, Pencil, Trash2, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import type { Tables } from '@/integrations/supabase/types';
+import { formatPrice } from '@/components/products/ProductCard';
 
 type Product = Tables<'products'>;
 
@@ -140,10 +141,10 @@ const Products = () => {
                     </TableCell>
                     <TableCell className="font-medium">{product.name}</TableCell>
                     <TableCell>
-                      ${Number(product.price).toFixed(2)}
+                      {formatPrice(product.price)}
                       {product.original_price && (
                         <span className="text-muted-foreground line-through ml-2 text-sm">
-                          ${Number(product.original_price).toFixed(2)}
+                          {formatPrice(product.original_price)}
                         </span>
                       )}
                     </TableCell>
