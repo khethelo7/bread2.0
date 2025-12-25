@@ -200,10 +200,10 @@ const Contact = () => {
                       LOCATION
                     </h3>
                     <p className="font-retro text-xl text-muted-foreground">
-                      Los Angeles, CA
+                      Cosmo City, Rooderpoort, Gauteng
                     </p>
                     <p className="font-retro text-lg text-muted-foreground/70">
-                      Shipping worldwide
+                      Shipping exclusive to Gauteng
                     </p>
                   </div>
                 </div>
@@ -217,10 +217,10 @@ const Contact = () => {
                       SUPPORT
                     </h3>
                     <p className="font-retro text-xl text-muted-foreground">
-                      Mon - Fri, 9am - 5pm PST
+                      Mon - Fri, 9am - 5pm SAST
                     </p>
                     <p className="font-retro text-lg text-muted-foreground/70">
-                      Discord support available
+                      technical support email: saneleknkosi@gmail.com
                     </p>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ const Contact = () => {
                   <li>• Shipping takes 3-7 business days</li>
                   <li>• Free returns within 30 days</li>
                   <li>• All sizes are true to fit</li>
-                  <li>• We accept all major credit cards</li>
+                  <li>• Payment methods are currently exclusive to EFT transfers ONLY</li>
                 </ul>
               </div>
             </div>
