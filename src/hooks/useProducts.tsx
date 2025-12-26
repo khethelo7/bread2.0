@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 
 export interface Product {
   id: string;
@@ -58,7 +59,10 @@ export const useProducts = (categorySlug?: string) => {
 
       const { data, error } = await query;
 
-      if (error) throw error;
+      if (error) {
+        logger.error('Products fetch failed', error.message);
+        throw error;
+      }
       return data as Product[];
     },
   });
@@ -77,7 +81,10 @@ export const useProduct = (slug: string) => {
         .eq("slug", slug)
         .maybeSingle();
 
-      if (error) throw error;
+      if (error){
+        logger.error("Product fetch failed", `Slug: ${slug}, Error: ${error.message}`);
+        throw error;
+      }
       return data as Product | null;
     },
     enabled: !!slug,

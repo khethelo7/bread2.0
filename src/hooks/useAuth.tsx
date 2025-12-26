@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
+import { logger } from '@/lib/logger';
 
 interface AuthContextType {
   user: User | null;
@@ -20,17 +21,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const checkAdminRole = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('admins')
-      .select('id')
-      .eq('id', userId)
-      .maybeSingle();
-
-    if (error) {
-      console.error('Error checking admin role:', error);
+    try {
+      const { data, error } = await supabase
+        .from('admins')
+        .select('id')
+        .eq('id', userId)
+        .maybeSingle();
+  
+      if (error) {
+        logger.error('Admin role check failed', `User: ${userId}, Error: ${error.message}`);
+        console.error('Error checking admin role:', error);
+        return false;
+      }
+      return !!data;
+    } catch (e) {
+      logger.error('Admin role check exception', `User: ${userId}, Exception: ${(e as Error).message}`);
       return false;
     }
-    return !!data;
   };
 
   useEffect(() => {
@@ -67,16 +74,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    return { error: error as Error | null };
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        logger.warn('Login failed', `Email: ${email}, Error: ${error.message}`);
+      } else {
+        logger.info('Login success', `Email: ${email}`);
+      }
+      return { error: error as Error | null };
+    } catch (e) {
+      logger.error('Login exception', `Email: ${email}, Exception: ${(e as Error).message}`);
+      return { error: e as Error };
+    }
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
-    setIsAdmin(false);
+    try {
+      await supabase.auth.signOut();
+      setIsAdmin(false);
+      logger.info('Logout ', 'User signed out');
+    } catch (e) {
+      logger.error('Logout failed', 'Sign out exception')
+    }
   };
 
   return (

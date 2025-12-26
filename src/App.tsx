@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
+import { usePageTracker } from "./hooks/usePageTracker";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
@@ -22,6 +23,12 @@ import Orders from "./pages/admin/Orders";
 import AdminMedia from "./pages/admin/Media";
 
 const queryClient = new QueryClient();
+
+// Component to track page views
+const PageTracker = ({ children }: { children: React.ReactNode}) => {
+  usePageTracker();
+  return <>{children}</>;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
