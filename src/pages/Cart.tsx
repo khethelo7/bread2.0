@@ -178,15 +178,13 @@ const Cart = () => {
                 </div>
               </div>
 
-              <Button
-                className="w-full font-pixel text-sm bg-primary text-primary-foreground py-6 retro-shadow hover-lift mb-4"
-                disabled
-              >
-                CHECKOUT
-              </Button>
-              <p className="font-retro text-sm text-muted-foreground text-center">
-                Payment integration coming soon!
-              </p>
+              <Link to="/checkout">
+                <Button
+                  className="w-full font-pixel text-sm bg-primary text-primary-foreground py-6 retro-shadow hover-lift mb-4"
+                >
+                  CHECKOUT
+                </Button>
+              </Link>
 
               <Link to="/shop">
                 <Button
