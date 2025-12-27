@@ -21,6 +21,7 @@ import ProductForm from "./pages/admin/ProductForm";
 import Messages from "./pages/admin/Messages";
 import Orders from "./pages/admin/Orders";
 import AdminMedia from "./pages/admin/Media";
+import Checkout from "./pages/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/media" element={<Media />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
